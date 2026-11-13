@@ -1,0 +1,8 @@
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+[data-contact-role][aria-pressed="true"] > span:first-child { border-color: #82dc6b; }
+[data-contact-role][aria-pressed="true"] > span:first-child > span { opacity: 1; }
+[aria-invalid="true"] { border-color: #c93631 !important; }
+[data-contact-submit]:not(:disabled) { background: #82dc6b; color: #192839; cursor: pointer; }
+[data-contact-status][data-error="true"] { color: #b42318; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
