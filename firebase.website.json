@@ -1,0 +1,26 @@
+{
+  "hosting": {
+    "site": "trustkeyper-website",
+    "public": "apps/flutter_app/website",
+    "ignore": ["**/.*", "**/node_modules/**"],
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "headers": [{
+      "source": "**",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache, must-revalidate" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" }
+      ]
+    }],
+    "redirects": [
+      { "source": "/login{,/**}", "destination": "https://trustkeyper.web.app/#/login", "type": 302 },
+      { "source": "/signup{,/**}", "destination": "https://trustkeyper.web.app/#/login", "type": 302 }
+    ],
+    "rewrites": [{
+      "source": "/api/contact",
+      "function": { "functionId": "submitWebsiteContact", "region": "asia-south1" }
+    }]
+  }
+}
