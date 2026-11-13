@@ -1,0 +1,38 @@
+{
+  "hosting": {
+    "site": "trustkeyper-website",
+    "public": "website/site/dist",
+    "ignore": ["**/.*", "**/node_modules/**"],
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "headers": [{
+      "source": "**",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache, must-revalidate" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }, {
+      "source": "/",
+      "headers": [{ "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' https://www.gstatic.com/firebasejs/12.4.0/ https://www.gstatic.com/recaptcha/ https://www.google.com/recaptcha/; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://www.google.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" }]
+    }, {
+      "source": "/contact-us{,/**}",
+      "headers": [{ "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' https://www.gstatic.com/firebasejs/12.4.0/ https://www.gstatic.com/recaptcha/ https://www.google.com/recaptcha/; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://www.google.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" }]
+    }, {
+      "source": "/{for-property-agents,for-builders,about-us,faqs,privacy-policy,terms-and-conditions,delete-account}{,/**}",
+      "headers": [{ "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" }]
+    }, {
+      "source": "/admin{,/**}",
+      "headers": [{ "key": "Content-Security-Policy", "value": "object-src 'none'; base-uri 'self'; frame-ancestors 'none'" }]
+    }],
+    "redirects": [
+      { "source": "/login{,/**}", "destination": "https://trustkeyper.web.app/#/login", "type": 302 },
+      { "source": "/signup{,/**}", "destination": "https://trustkeyper.web.app/#/login", "type": 302 },
+      { "source": "/for-brokers{,/}", "destination": "/for-property-agents", "type": 301 }
+    ],
+    "rewrites": [
+      { "source": "/admin{,/**}", "destination": "/admin/index.html" },
+      { "source": "/api/**", "function": { "functionId": "websiteEnquiry", "region": "asia-south1" } }
+    ]
+  }
+}
